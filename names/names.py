@@ -1,5 +1,5 @@
 import time
-
+from binary_search_tree import BinarySearchTree
 start_time = time.time()
 
 f = open('names_1.txt', 'r')
@@ -18,10 +18,26 @@ for name_1 in names_1:
         if name_1 == name_2:
             duplicates.append(name_1)
 
-end_time = time.time()
-print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print (f"runtime: {end_time - start_time} seconds")
 
+tree_1 = BinarySearchTree(name_1[0])
+tree_2 = BinarySearchTree(name_2[0])
+
+for i in range(1, len(name_1)):
+    tree_1.insert(name_1[i])
+
+
+for i in range(1, len(name_2)):
+    tree_2.insert(name_2[i])
+
+
+for name in tree_1:
+    print(name)
+
+end_time = time.time()
+print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
+print(f"runtime: {end_time - start_time} seconds")
+
+print("tree", tree_1)
 # ---------- Stretch Goal -----------
 # Python has built-in tools that allow for a very efficient approach to this problem
 # What's the best time you can accomplish?  Thare are no restrictions on techniques or data
