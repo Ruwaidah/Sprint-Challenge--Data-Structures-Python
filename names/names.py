@@ -13,31 +13,28 @@ f.close()
 duplicates = []  # Return the list of duplicates in this data structure
 
 # Replace the nested for loops below with your improvements
-for name_1 in names_1:
-    for name_2 in names_2:
-        if name_1 == name_2:
-            duplicates.append(name_1)
+# for name_1 in names_1:
+#     for name_2 in names_2:
+#         if name_1 == name_2:
+#             duplicates.append(name_1)
 
 
-tree_1 = BinarySearchTree(name_1[0])
-tree_2 = BinarySearchTree(name_2[0])
+tree_search = BinarySearchTree("")
 
-for i in range(1, len(name_1)):
-    tree_1.insert(name_1[i])
-
-
-for i in range(1, len(name_2)):
-    tree_2.insert(name_2[i])
+for name in names_1:
+    tree_search.insert(name)
 
 
-for name in tree_1:
-    print(name)
+for name in names_2:
+    if tree_search.contains(name):
+        duplicates.append(name)
 
+
+print(len(duplicates))
 end_time = time.time()
 print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
 print(f"runtime: {end_time - start_time} seconds")
 
-print("tree", tree_1)
 # ---------- Stretch Goal -----------
 # Python has built-in tools that allow for a very efficient approach to this problem
 # What's the best time you can accomplish?  Thare are no restrictions on techniques or data
